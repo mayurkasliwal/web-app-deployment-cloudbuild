@@ -33,7 +33,9 @@ spec:
         image: gcr.io/GOOGLE_CLOUD_PROJECT/my-repository/hello-cloudbuild:COMMIT_SHA
         ports:
         - containerPort: 8080
-      serviceAccountName: readonly-sa 
+      serviceAccountName: readonly-sa
+      nodeSelector:
+        iam.gke.io/gke-metadata-server-enabled: "true"
 ---
 kind: Service
 apiVersion: v1
