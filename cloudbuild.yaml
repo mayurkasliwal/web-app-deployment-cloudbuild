@@ -57,8 +57,7 @@ steps:
      ls -l manifests/dev
      git add . && git commit -m "push to manifests repo"
      git push https://mayurkasliwal:$$PASSWORD@github.com/mayurkasliwal/web-app-manifests.git
-     availableSecrets:
-     secretEnv: ['PASSWORD']
+  secretEnv: ['PASSWORD']
 availableSecrets:
   secretManager:
   - versionName: projects/$PROJECT_ID/secrets/repotoken/versions/latest
