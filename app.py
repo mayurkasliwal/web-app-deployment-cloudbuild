@@ -29,7 +29,7 @@ def hello():
   name = f"projects/{GOOGLE_CLOUD_PROJECT}/secrets/{SECRET_NAME}/versions/latest"
   response = client.access_secret_version(name=name)
   payload = response.payload.data.decode("UTF-8")
-  greeting = f"Hello everyone! , this is {name}"
+  greeting = f"Hello everyone! , this is {payload}"
   return greeting
 
 if __name__ == '__main__':
