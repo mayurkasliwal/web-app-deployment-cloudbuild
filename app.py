@@ -14,11 +14,17 @@
 
 # [START hello-app]
 from flask import Flask
+from google.cloud import secretmanager
 app = Flask('hello-cloudbuild')
 
 @app.route('/')
 def hello():
-  return "Hello World i am build using cloudbuild!\n"
+  project_id="cloud-studio-369512"
+  client = secretmanager.SecretManagerServiceClient()
+  name = f"projects/{project_id}/secrets/my_secret_value/versions/latest"
+  response = client.access_secret_version(name=name)
+  my_secret_value = response.payload.data.decode("UTF-8")
+  return ("Hello {}, i am build using cloudbuild!/n".format(name))
 
 if __name__ == '__main__':
   app.run(host = '0.0.0.0', port = 8080)
