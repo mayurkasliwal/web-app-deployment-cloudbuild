@@ -58,8 +58,17 @@ steps:
      git add . && git commit -m "push to manifests repo"
      git push https://mayurkasliwal:$$PASSWORD@github.com/mayurkasliwal/web-app-manifests.git
   secretEnv: ['PASSWORD']
+- name: "gcr.io/cloud-builders/gke-deploy"
+  args:
+  - run
+  - --filename=/web-app-manifests/manifests/dev/kubernetes.yaml
+  - --image=gcr.io/$PROJECT_ID/my-repository/hello-cloudbuild:$SHORT_SHA
+  - --location=us-central1
+  - --cluster=demo-gke-test-1
 availableSecrets:
   secretManager:
   - versionName: projects/$PROJECT_ID/secrets/repotoken/versions/latest
     env: 'PASSWORD'
+
+
 # [END cloudbuild-delivery]
