@@ -3,7 +3,7 @@ import os
 from google.cloud import secretmanager
 from flask import Flask
 
-GOOGLE_CLOUD_PROJECT = os.getenv("GOOGLE_CLOUD_PROJECT")
+GOOGLE_CLOUD_PROJECT = "cloud-studio-369512"
 # SECRET_NAME = os.getenv("SECRET_NAME")
 SECRET_NAME="my-secret-value"
 secret_client = secretmanager.SecretManagerServiceClient()
