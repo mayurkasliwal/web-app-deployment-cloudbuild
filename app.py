@@ -5,7 +5,7 @@ from flask import Flask
 
 GOOGLE_CLOUD_PROJECT = "cloud-studio-369512"
 # SECRET_NAME = os.getenv("SECRET_NAME")
-SECRET_NAME="my-secret-value"
+SECRET_NAME="my_secret_value"
 secret_client = secretmanager.SecretManagerServiceClient()
 
 app = Flask('hello-cloudbuild')
