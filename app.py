@@ -24,7 +24,8 @@ def hello():
   name = f"projects/{project_id}/secrets/my_secret_value/versions/latest"
   response = client.access_secret_version(name=name)
   my_secret_value = response.payload.data.decode("UTF-8")
-  return ("Hello {}, i am build using cloudbuild!/n".format(name))
+  greeting = f"Hello World! , this is {name}"
+  return greeting
 
 if __name__ == '__main__':
   app.run(host = '0.0.0.0', port = 8080)
